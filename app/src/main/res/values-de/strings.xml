@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MathBattle</string>
+
+    <string name="starting_quiz">Los geht\'s</string>
+    <string name="plus">plus</string>
+    <string name="minus">minus</string>
+    <string name="times">mal</string>
+    <string name="divide">durch</string>
+</resources>
