@@ -2,9 +2,9 @@
 
 grammar numbers;
 
-public <answer> = [<playerTag>] [<decimalNumber>];
+public <answer> = /1e-10/ <decimalNumber> | /1e-5/ <playerTag> [<decimalNumber>];
 
-<playerTag> = green | red | blue | pink | gold | orange | sky | purple;
+<playerTag> = /20/ green | /40/ red | /1/ blue | /40/ pink | /20/ gold | /50/ orange | /20/ sky | /40/ purple;
 
 <decimalNumber> = [<sign>] <integer> [<decimalSeparator> (<onesZero>+ | <integer>)];
 
