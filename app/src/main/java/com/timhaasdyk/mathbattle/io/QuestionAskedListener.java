@@ -7,4 +7,6 @@ import com.timhaasdyk.mathbattle.models.Question;
  */
 public interface QuestionAskedListener {
     void onFinishedAskingQuestion(Question question);
+
+    void onFinishedOfferingHelp();
 }

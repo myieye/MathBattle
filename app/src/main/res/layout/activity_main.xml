@@ -1,28 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:orientation="vertical"
-              android:padding="16dp" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/appContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-    <TextView
-            android:id="@+id/caption_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:typeface="sans" />
+    <Button android:id="@+id/stopButton"
+            android:text="@string/stop"
+            android:visibility="invisible"
+            android:onClick="onStopClick"
+            android:layout_width="@dimen/btnCircleRadius"
+            android:layout_height="@dimen/btnCircleRadius"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/stop_button"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@android:color/holo_red_dark"/>
 
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center" >
+    <Button android:id="@+id/startButton"
+            android:text="@string/start"
+            android:onClick="onStartClick"
+            android:layout_width="@dimen/btnCircleDiameter"
+            android:layout_height="@dimen/btnCircleDiameter"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/start_button"
+            android:textStyle="bold"
+            android:textSize="35sp"
+            android:textColor="@android:color/holo_green_dark"/>
 
-        <TextView
-                android:id="@+id/result_text"
-                android:layout_width="wrap_content"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/buttonGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+        <com.timhaasdyk.mathbattle.ui.drawables.PlayerButton
+                android:id="@+id/btnPlayer1"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-    </LinearLayout>
-</LinearLayout>
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_margin="@dimen/circleSpace"
+                android:onClick="onPlayerButtonClick"
+        />
+
+        <com.timhaasdyk.mathbattle.ui.drawables.PlayerButton
+                android:id="@+id/btnPlayer2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/btnPlayer1"
+                android:layout_margin="@dimen/circleSpace"
+                android:onClick="onPlayerButtonClick"
+        />
+
+        <com.timhaasdyk.mathbattle.ui.drawables.PlayerButton
+                android:id="@+id/btnPlayer3"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_above="@+id/btnPlayer4"
+                android:layout_margin="@dimen/circleSpace"
+                android:onClick="onPlayerButtonClick"
+        />
+
+        <com.timhaasdyk.mathbattle.ui.drawables.PlayerButton
+                android:id="@id/btnPlayer4"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_margin="@dimen/circleSpace"
+                android:onClick="onPlayerButtonClick"
+        />
+
+
+        <!-- RIGHT SIDE -->
+
+
+        <com.timhaasdyk.mathbattle.ui.drawables.PlayerButton
+                android:id="@+id/btnPlayer5"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="@dimen/circleSpace"
+                android:onClick="onPlayerButtonClick"
+        />
+
+        <com.timhaasdyk.mathbattle.ui.drawables.PlayerButton
+                android:id="@+id/btnPlayer6"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/btnPlayer5"
+                android:layout_margin="@dimen/circleSpace"
+                android:onClick="onPlayerButtonClick"
+
+        />
+
+        <com.timhaasdyk.mathbattle.ui.drawables.PlayerButton
+                android:id="@+id/btnPlayer7"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_above="@+id/btnPlayer8"
+                android:layout_margin="@dimen/circleSpace"
+                android:onClick="onPlayerButtonClick"
+        />
+
+        <com.timhaasdyk.mathbattle.ui.drawables.PlayerButton
+                android:id="@id/btnPlayer8"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="@dimen/circleSpace"
+                android:onClick="onPlayerButtonClick"
+        />
+    </RelativeLayout>
+</RelativeLayout>

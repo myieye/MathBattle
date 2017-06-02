@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="green">Green</string>
+    <string name="red">Red</string>
+    <string name="blue">Blue</string>
+    <string name="pink">Pink</string>
+    <string name="gold">Gold</string>
+    <string name="orange">Orange</string>
+    <string name="sky">Sky</string>
+    <string name="purple">Purple</string>
+</resources>

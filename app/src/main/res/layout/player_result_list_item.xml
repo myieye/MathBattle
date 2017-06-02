@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:paddingStart="10dp"
+                android:paddingLeft="10dp"
+                android:paddingEnd="10dp"
+                android:paddingRight="10dp"
+>
+
+    <TextView
+            android:id="@+id/playerResultRank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="90sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    <TextView
+            android:id="@+id/period"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="90sp"
+            android:text="."
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/playerResultRank"
+            android:layout_toEndOf="@id/playerResultRank" />
+
+    <com.timhaasdyk.mathbattle.ui.drawables.PlayerButton
+            android:id="@+id/btnPlayer"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/period"
+            android:layout_toEndOf="@id/period"
+            android:layout_margin="@dimen/circleSpace"
+    />
+
+    <TextView
+            android:id="@+id/playerResultPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="70sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true" />
+
+</RelativeLayout>

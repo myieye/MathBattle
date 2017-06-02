@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">MathBattle</string>
+    <string name="locale">en</string>
 
     <string name="kws_caption">To start demonstration say \"oh mighty computer\".</string>
     <string name="menu_caption">Say \"digits\", \"forecast\" or \"phones\" to choose the grammar, language model or phonetic decoder example.</string>
@@ -12,4 +13,22 @@
     <string name="minus">minus</string>
     <string name="times">times</string>
     <string name="divide">divided by</string>
+    <string name="choosePlayerTitle">Select a player</string>
+    <string name="resultsTitle">Results</string>
+    <string name="start">Go</string>
+    <string name="stop">X</string>
+
+    <string name="help_1_1">Let me repeat the question</string>
+    <string name="help_1_2">You can do it</string>
+    <string name="help_2_1">Take your time</string>
+    <string name="help_2_2">Try this again</string>
+    <string name="help_3_1">One more try</string>
+    <string name="help_3_2">Don\'t give up</string>
+
+    <string name="skipQuestion">Dont worry, try the next one</string>
+
+    <string name="acoustic_model_folder">acoustic_model</string>
+    <string name="dictionary_file">cmudict-en-us.dict</string>
+    <string name="number_grammar_file">number.gram</string>
+    <string name="chooseLevel">Choose Level</string>
 </resources>

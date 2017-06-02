@@ -1,5 +1,6 @@
 package com.timhaasdyk.mathbattle.generators;
 
+import com.timhaasdyk.mathbattle.io.speech_recognition.norm.SpeechNormalizer;
 import com.timhaasdyk.mathbattle.models.Question;
 
 /**
@@ -8,9 +9,11 @@ import com.timhaasdyk.mathbattle.models.Question;
 public abstract class QuestionGenerator {
 
     private int level;
+    protected SpeechNormalizer speechNormalizer;
 
-    public QuestionGenerator(int level) {
+    public QuestionGenerator(int level, SpeechNormalizer speechNormalizer) {
         this.level = level;
+        this.speechNormalizer = speechNormalizer;
     }
 
     public int getLevel() {

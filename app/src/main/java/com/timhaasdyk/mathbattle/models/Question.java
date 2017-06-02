@@ -1,20 +1,22 @@
 package com.timhaasdyk.mathbattle.models;
 
+import java.util.Locale;
+
 /**
  * @author Tim Haasdyk on 09-May-17.
  */
 public abstract class Question {
 
-    private String text;
-    private String answer;
     private int level;
+    private String qText;
+    private String answer;
     private Player answeredBy = null;
     private QuestionStatus status = QuestionStatus.UNASKED;
 
-    public Question(String text, String answer, int level) {
-        this.text = text;
-        this.answer = answer;
+    public Question(int level, String qText, String answer) {
         this.level = level;
+        this.qText = qText;
+        this.answer = answer;
     }
 
     public boolean attemptAnswer(Player player, String attempt) {
@@ -28,16 +30,16 @@ public abstract class Question {
 
     protected abstract boolean isCorrectAnswer(String attempt);
 
-    public String getText() {
-        return text;
+    public int getLevel() {
+        return level;
+    }
+
+    public String getQText() {
+        return qText;
     }
 
     public String getAnswer() {
         return answer;
-    }
-
-    public int getLevel() {
-        return level;
     }
 
     public Player getAnsweredBy() {
@@ -54,5 +56,10 @@ public abstract class Question {
 
     public void setStatus(QuestionStatus status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(Locale.getDefault(), "[%d]{%s}:{%s}", level, qText, answer);
     }
 }

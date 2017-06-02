@@ -1,0 +1,29 @@
+#JSGF V1.0;
+
+grammar numbers;
+
+public <answer> = /1e-10/ <decimalNumber> | /1e-5/ <playerTag> [<decimalNumber>];
+
+<playerTag> = /1/ grün | /1/ rot | /1/ blau | /30/ pink | /100/ gelb | /10/ orange | /10/ himmel | /10/ lila;
+
+<decimalNumber> = [<sign>] <integer> [<decimalSeparator> (<onesEZero>+ | <integer>)];
+
+<decimalSeparator> = punkt | komma;
+
+<sign> = minus | negativ;
+
+<integer> = null
+    | <tenTeensE>
+    | <hundreds>
+    | <thousands>;
+
+<onesEZero> = <onesE> | null;
+<onesWOO> = zwei | drei |  vier | fünf | sechs | sieben | acht | neun;
+<onesE> = eins | <onesWOO>;
+<ones> = ein | <onesWOO>;
+<teens> = zehn | elf | zwölf | dreizehn | vierzehn | fünfzehn | sechzehn | siebzehn | achtzehn | neunzehn;
+<tens> = zwanzig | dreißig | vierzig | fünfzig | sechzig | siebzig | achtzig | neunzig;
+<tenTeensE> = <onesE> | <teens> | ([<ones> und]  <tens>);
+<tenTeens> = <ones> | <teens> | ([<ones> und]  <tens>);
+<hundreds> = <ones> hundert <tenTeensE>;
+<thousands> = (<tenTeens> | <hundreds>) tausend [<hundreds> | <tenTeensE>];

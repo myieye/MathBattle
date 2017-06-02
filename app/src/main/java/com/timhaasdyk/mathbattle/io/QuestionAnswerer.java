@@ -16,4 +16,6 @@ public interface QuestionAnswerer {
     void resume();
 
     void destroy();
+
+    void cancel();
 }

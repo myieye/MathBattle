@@ -1,19 +1,17 @@
 package com.timhaasdyk.mathbattle.models;
 
-import android.graphics.Color;
-
 /**
  * @author Tim Haasdyk on 06-May-17.
  */
 public class Player {
 
-    String name;
-    Color color;
-    int points;
+    private String name;
+    private PlayerTag tag;
+    private int points;
 
-    public Player(String name, Color color, int points) {
+    public Player(PlayerTag tag, String name, int points) {
+        this.tag = tag;
         this.name = name;
-        this.color = color;
         this.points = points;
     }
 
@@ -21,8 +19,8 @@ public class Player {
         return name;
     }
 
-    public Color getColor() {
-        return color;
+    public PlayerTag getTag() {
+        return tag;
     }
 
     public int getPoints() {
@@ -31,5 +29,16 @@ public class Player {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Player that = (obj instanceof Player) ? (Player) obj : null;
+        return that != null && this.getTag().equals(that.getTag());
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

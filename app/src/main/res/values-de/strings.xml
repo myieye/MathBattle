@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MathBattle</string>
+    <string name="locale">de</string>
 
     <string name="starting_quiz">Los geht\'s</string>
     <string name="plus">plus</string>
     <string name="minus">minus</string>
     <string name="times">mal</string>
     <string name="divide">durch</string>
+    <string name="choosePlayerTitle">Wählen Sie Ihren Namen aus</string>
+    <string name="start">Los</string>
+    <string name="resultsTitle">Ergebnisse</string>
+
+    <string name="dictionary_file">cmusphinx-voxforge-de.dic</string>
+    <string name="chooseLevel">Schwierigkeit auswählen</string>
+    <string name="help_1_1">Lass mich wiederholen</string>
+    <string name="help_1_2">Du schaffst das</string>
+    <string name="help_2_1">Kein Stress</string>
+    <string name="help_2_2">Probier es nochmal</string>
+    <string name="help_3_1">Noch ein Versuch</string>
+    <string name="help_3_2">Gib nicht auf</string>
+    <string name="skipQuestion">Macht nichts, probier die nächste</string>
+
 </resources>

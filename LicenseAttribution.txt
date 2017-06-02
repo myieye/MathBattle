@@ -1,0 +1,5 @@
+correct_answer.mp3 : https://freesound.org/people/shinephoenixstormcrow/sounds/337049/ : shinephoenixstormcrow
+wrong_answer_1 : https://freesound.org/people/Autistic%20Lucario/sounds/142608/ : Autistic Lucario
+wrong_answer_2 : https://freesound.org/people/willy_ineedthatapp_com/sounds/167328/ : willy_ineedthatapp_com
+wrong_answer_3 : https://freesound.org/people/timgormly/sounds/181857/ : timgormly
+quiz_finished : https://freesound.org/people/mickleness/sounds/269198/ : mickleness

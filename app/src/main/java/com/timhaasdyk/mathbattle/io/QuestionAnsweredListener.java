@@ -1,5 +1,6 @@
 package com.timhaasdyk.mathbattle.io;
 
+import com.timhaasdyk.mathbattle.io.tts.HelpType;
 import com.timhaasdyk.mathbattle.models.Question;
 
 /**
@@ -7,4 +8,5 @@ import com.timhaasdyk.mathbattle.models.Question;
  */
 public interface QuestionAnsweredListener {
     void onFinishedAnsweringQuestion(Question question);
+    void onNeedsHelp(HelpType helpType);
 }
