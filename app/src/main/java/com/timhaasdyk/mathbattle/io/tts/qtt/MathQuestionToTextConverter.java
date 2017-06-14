@@ -15,6 +15,7 @@ public class MathQuestionToTextConverter extends QuestionToTextConverter {
         this.resources = resources;
     }
 
+    @Override
     public String getSpeechForQuestion(Question question) {
         return convertMathSymbolsToWords(question.getQText());
     }

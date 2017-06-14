@@ -31,4 +31,7 @@
     <string name="dictionary_file">cmudict-en-us.dict</string>
     <string name="number_grammar_file">number.gram</string>
     <string name="chooseLevel">Choose Level</string>
+
+    <string name="start_threshold">1e-40</string>
+    <string name="start_keyphrase">lets go</string>
 </resources>

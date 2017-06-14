@@ -30,14 +30,15 @@ import com.timhaasdyk.mathbattle.io.tts.TTSQuestionAsker;
 import com.timhaasdyk.mathbattle.io.tts.qtt.MathQuestionToTextConverter;
 import com.timhaasdyk.mathbattle.logic.QuizProcessor;
 import com.timhaasdyk.mathbattle.logic.impl.QuizProcessorImpl;
+import com.timhaasdyk.mathbattle.logic.impl.QuizzerImpl;
 import com.timhaasdyk.mathbattle.models.Player;
 import com.timhaasdyk.mathbattle.models.PlayerResult;
 import com.timhaasdyk.mathbattle.models.PlayerTag;
 import com.timhaasdyk.mathbattle.models.Quiz;
-import com.timhaasdyk.mathbattle.quizzer.PlayerAdmin;
-import com.timhaasdyk.mathbattle.quizzer.PlayerPosition;
-import com.timhaasdyk.mathbattle.quizzer.QuizEventsListener;
-import com.timhaasdyk.mathbattle.quizzer.Quizzer;
+import com.timhaasdyk.mathbattle.logic.impl.PlayerAdmin;
+import com.timhaasdyk.mathbattle.models.PlayerPosition;
+import com.timhaasdyk.mathbattle.logic.QuizEventsListener;
+import com.timhaasdyk.mathbattle.logic.Quizzer;
 import com.timhaasdyk.mathbattle.ui.adapters.PlayerSelectionAdapter;
 import com.timhaasdyk.mathbattle.ui.adapters.ResultListAdapter;
 import com.timhaasdyk.mathbattle.ui.util.PlayerButtonUtil;
@@ -67,7 +68,6 @@ public class MainActivity extends AppCompatActivity
     private int level = 1;
     private int numQuestions = 10;
 
-    /* Used to handle permission request */
     private static final int PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
 
     @Override
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity
         sphinxRecognizer.setOnStartRecognizedListener(this);
         List<PlayerAnswerRecognizer> recognizers = Arrays.asList(this, sphinxRecognizer);
         QuestionAnswerer questionAnswerer = new MultiInputQuestionAnswerer(recognizers, this, soundPlayer);
-        quizzer = new Quizzer(this, questionAsker, questionAnswerer, soundPlayer);
+        quizzer = new QuizzerImpl(this, questionAsker, questionAnswerer, soundPlayer);
 
         PlayerButtonUtil.setTestPlayerButtons(playerAdmin, currPlayers);
     }

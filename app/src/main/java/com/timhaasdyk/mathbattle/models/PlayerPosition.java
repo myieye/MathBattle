@@ -1,4 +1,4 @@
-package com.timhaasdyk.mathbattle.quizzer;
+package com.timhaasdyk.mathbattle.models;
 
 /**
  * @author Tim Haasdyk on 12-May-17.

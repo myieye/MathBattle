@@ -1,4 +1,4 @@
-package com.timhaasdyk.mathbattle.quizzer;
+package com.timhaasdyk.mathbattle.logic;
 
 import com.timhaasdyk.mathbattle.models.Player;
 import com.timhaasdyk.mathbattle.models.Quiz;

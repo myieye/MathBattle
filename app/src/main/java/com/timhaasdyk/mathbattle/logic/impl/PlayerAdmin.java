@@ -1,4 +1,4 @@
-package com.timhaasdyk.mathbattle.quizzer;
+package com.timhaasdyk.mathbattle.logic.impl;
 
 import android.view.ViewGroup;
 import com.timhaasdyk.mathbattle.R;
@@ -6,6 +6,7 @@ import com.timhaasdyk.mathbattle.exceptions.PlayerNotFoundException;
 import com.timhaasdyk.mathbattle.exceptions.TooManyPlayersException;
 import com.timhaasdyk.mathbattle.models.Player;
 import com.timhaasdyk.mathbattle.models.PlayerTag;
+import com.timhaasdyk.mathbattle.models.PlayerPosition;
 
 import java.util.*;
 
@@ -16,7 +17,6 @@ public class PlayerAdmin {
 
     private Map<PlayerPosition, Player> playerSlots = new HashMap<>();
     private ViewGroup buttonGroup;
-    private List<String> playerTags;
 
     public PlayerAdmin(ViewGroup buttonGroup) {
         for (int i = 0; i < buttonGroup.getChildCount(); i++) {

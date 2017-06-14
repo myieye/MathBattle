@@ -14,11 +14,11 @@ public abstract class SpeechNormalizer {
 
     public abstract String normalize(String input);
 
-    protected boolean germanLocale(Locale locale) {
+    boolean germanLocale(Locale locale) {
         return germanLocales.contains(locale);
     }
 
-    protected boolean englishLocale(Locale locale) {
+    boolean englishLocale(Locale locale) {
         return englishLocales.contains(locale);
     }
 }

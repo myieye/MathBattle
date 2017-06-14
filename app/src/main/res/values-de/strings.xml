@@ -22,4 +22,7 @@
     <string name="help_3_2">Gib nicht auf</string>
     <string name="skipQuestion">Macht nichts, probier die nächste</string>
 
+    <string name="start_threshold">0.5</string>
+    <string name="start_keyphrase">los</string>
+
 </resources>

@@ -31,19 +31,13 @@ public class MathQuestionGenerator extends QuestionGenerator {
 
         switch(level) {
             case 1:
-                ops = 2;
-                maxA = 7;
-                maxB = 3;
+                ops = 2; maxA = 7; maxB = 3;
                 break;
             case 2:
-                ops = 2;
-                maxA = 15;
-                maxB = 7;
+                ops = 2; maxA = 15; maxB = 7;
                 break;
             case 3:
-                ops = 3;
-                maxA = 15;
-                maxB = 15;
+                ops = 3; maxA = 15; maxB = 15;
                 break;
         }
     }

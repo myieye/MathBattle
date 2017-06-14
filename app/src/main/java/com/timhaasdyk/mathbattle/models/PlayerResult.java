@@ -1,7 +1,6 @@
 package com.timhaasdyk.mathbattle.models;
 
 import android.support.annotation.NonNull;
-import com.timhaasdyk.mathbattle.quizzer.PlayerPosition;
 
 /**
  * @author Tim Haasdyk on 26-May-17.

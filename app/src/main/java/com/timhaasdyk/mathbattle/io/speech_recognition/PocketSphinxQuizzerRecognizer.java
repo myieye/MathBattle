@@ -7,7 +7,7 @@ import com.timhaasdyk.mathbattle.R;
 import com.timhaasdyk.mathbattle.io.*;
 import com.timhaasdyk.mathbattle.io.speech_recognition.norm.SpeechNormalizer;
 import com.timhaasdyk.mathbattle.models.Player;
-import com.timhaasdyk.mathbattle.quizzer.PlayerAdmin;
+import com.timhaasdyk.mathbattle.logic.impl.PlayerAdmin;
 import edu.cmu.pocketsphinx.*;
 import org.apache.commons.lang3.StringUtils;
 
@@ -32,7 +32,7 @@ public class PocketSphinxQuizzerRecognizer
     private final SpeechNormalizer speechNormalizer;
     private long startSpeechTime = 0;
 
-    private String startKeyword;
+    private String startKeyphrase;
 
     public PocketSphinxQuizzerRecognizer(Context context,
                                          OnRecognizerInitListener onRecognizerInitListener,
@@ -41,7 +41,7 @@ public class PocketSphinxQuizzerRecognizer
         this.context = context;
         this.playerAdmin = playerAdmin;
         this.speechNormalizer = speechNormalizer;
-        this.startKeyword = str(R.string.start).toLowerCase();
+        this.startKeyphrase = str(R.string.start_keyphrase).toLowerCase();
         init(onRecognizerInitListener);
     }
 
@@ -79,16 +79,15 @@ public class PocketSphinxQuizzerRecognizer
         recognizer = SpeechRecognizerSetup.defaultSetup()
                 .setAcousticModel(new File(assetDir, context.getString(R.string.acoustic_model_folder)))
                 .setDictionary(new File(assetDir, context.getString(R.string.dictionary_file)))
-                .setKeywordThreshold((float)1e-10)
-                //.setRawLogDir(assetsDir) // To disable logging of raw audio, comment out this call (takes a lot of space on the device)
+                .setKeywordThreshold(Double.valueOf(str(R.string.start_threshold)).floatValue())
                 .getRecognizer();
         recognizer.addListener(this);
 
         File numberGrammar = new File(assetDir, context.getString(R.string.number_grammar_file));
         recognizer.addGrammarSearch(Search.NUMBER.name(), numberGrammar);
 
-        Log.d("RECOG", "Start Keyword: " + startKeyword);
-        recognizer.addKeyphraseSearch(Search.START.name(), startKeyword);
+        Log.d("RECOG", "Start Keyphrase: " + startKeyphrase);
+        recognizer.addKeyphraseSearch(Search.START.name(), startKeyphrase);
     }
 
     @Override
@@ -99,7 +98,7 @@ public class PocketSphinxQuizzerRecognizer
 
     @Override
     public void onEndOfSpeech() {
-        Log.d("RECOGT", String.format("[%d] onEndOfSpeech", System.currentTimeMillis()));
+        Log.d("RECOG", "onEndOfSpeech");
         startSpeechTime = 0;
         reset();
     }
@@ -124,9 +123,9 @@ public class PocketSphinxQuizzerRecognizer
             return;
 
         String input = hypothesis.getHypstr();
-        Log.d("RECOGT", input);
+        Log.d("RECOG", "Hypothesis: " + input);
 
-        if (input.equalsIgnoreCase(startKeyword)) {
+        if (input.equalsIgnoreCase(startKeyphrase)) {
             if (startListener != null) startListener.onStartRecognized();
             return;
         }
@@ -137,14 +136,14 @@ public class PocketSphinxQuizzerRecognizer
             input = StringUtils.substringAfter(input, " ");
             Player player = playerAdmin.getPlayerByTag(firstWord);
             if (StringUtils.isNotBlank(input)) {
+                Log.d("RECOG", "onPlayerAnswer");
                 playerAnswerListener.onPlayerAnswer(player, speechNormalizer.normalize(input), startSpeechTime, finalResult);
-                Log.d("RECOGT", String.format("[%d] onPlayerAnswer", System.currentTimeMillis()));
             } else {
                 playerAnswerListener.onPlayer(player, startSpeechTime);
             }
         } else {
+            Log.d("RECOG", "onAnswer");
             playerAnswerListener.onAnswer(speechNormalizer.normalize(input), finalResult);
-            Log.d("RECOGT", String.format("[%d] onAnswer", System.currentTimeMillis()));
         }
     }
 

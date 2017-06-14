@@ -35,7 +35,7 @@ public class MultiInputQuestionAnswerer implements QuestionAnswerer, OnPlayerAns
     private static final int ACTIVE_PLAYER_TIMEOUT = 1500;
     private static final int HELP_TIMEOUT = 5000;
     private static final int HELP_WAIT_TIMEOUT = 1000;
-    private static final int ATTEMPTS_BEFORE_HELP = 5;
+    private static final int ATTEMPTS_BEFORE_HELP = 3;
 
     public MultiInputQuestionAnswerer(List<PlayerAnswerRecognizer> recognizers,
                                       ActivePlayerListener activePlayerListener,
@@ -116,7 +116,7 @@ public class MultiInputQuestionAnswerer implements QuestionAnswerer, OnPlayerAns
         if (finalAnswer) attemptCount++;
 
         if (currQ.attemptAnswer(player, answer)) {
-            Log.d("RECOGT", String.format("[%d] Question answered by: %s", System.currentTimeMillis(), player));
+            Log.d("RECOG", String.format("[%d] Question answered by: %s", System.currentTimeMillis(), player));
             questionAnsweredListener.onFinishedAnsweringQuestion(currQ);
             reset();
             return true;
@@ -154,7 +154,6 @@ public class MultiInputQuestionAnswerer implements QuestionAnswerer, OnPlayerAns
             @Override
             public void run() {
                 lock.lock();
-                Log.d("LOCK", "LOCKED ASYNC");
                 Player player = answeringPlayer.getPlayer();
                 if (answeringPlayer.equals(answeringPlayers.peek())) {
                     answeringPlayers.remove().getPlayer();
@@ -162,7 +161,6 @@ public class MultiInputQuestionAnswerer implements QuestionAnswerer, OnPlayerAns
                 if (!playerInAnswerQueue(player))
                     activePlayerListener.onDeactivatePlayer(player);
                 lock.unlock();
-                Log.d("LOCK", "UNLOCKED ASYNC");
             }
         }, ACTIVE_PLAYER_TIMEOUT, TimeUnit.MILLISECONDS);
     }

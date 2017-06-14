@@ -19,10 +19,10 @@ public class PlayerStore {
 
     private static PlayerStore instance;
 
-    private List<ColorTag> colorIds;
+    private List<ColorTag> colorTags;
 
     private PlayerStore() {
-        this.colorIds = Arrays.asList(
+        this.colorTags = Arrays.asList(
                 new ColorTag(str(R.string.green), col(R.color.green)),
                 new ColorTag(str(R.string.blue), col(R.color.blue)),
                 new ColorTag(str(R.string.pink), col(R.color.pink)),
@@ -40,14 +40,14 @@ public class PlayerStore {
         return instance;
     }
 
-    public List<ColorTag> getColorIds() {
-        return new ArrayList<>(colorIds);
+    public List<ColorTag> getColorTags() {
+        return new ArrayList<>(colorTags);
     }
 
     public List<Player> getDefaultPlayers() {
         List<Player> players = new ArrayList<>();
-        for (PlayerTag id : colorIds) {
-            players.add(new Player(id, id.toString(), 0));
+        for (PlayerTag id : colorTags) {
+            players.add(new Player(id, id.toString()));
         }
         return players;
     }

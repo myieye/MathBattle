@@ -1,4 +1,4 @@
-package com.timhaasdyk.mathbattle.quizzer;
+package com.timhaasdyk.mathbattle.logic.impl;
 
 import com.timhaasdyk.mathbattle.exceptions.QuizAlreadyFinishedException;
 import com.timhaasdyk.mathbattle.io.QuestionAnsweredListener;
@@ -8,6 +8,8 @@ import com.timhaasdyk.mathbattle.io.QuestionAsker;
 import com.timhaasdyk.mathbattle.io.sounds.SoundPlayer;
 import com.timhaasdyk.mathbattle.io.tts.HelpLevel;
 import com.timhaasdyk.mathbattle.io.tts.HelpType;
+import com.timhaasdyk.mathbattle.logic.QuizEventsListener;
+import com.timhaasdyk.mathbattle.logic.Quizzer;
 import com.timhaasdyk.mathbattle.models.Question;
 import com.timhaasdyk.mathbattle.models.QuestionStatus;
 import com.timhaasdyk.mathbattle.models.Quiz;
@@ -17,7 +19,7 @@ import static com.timhaasdyk.mathbattle.ui.util.DelayUtil.delay;
 /**
  * @author Tim Haasdyk on 06-May-17.
  */
-public class Quizzer implements QuestionAskedListener, QuestionAnsweredListener {
+public class QuizzerImpl implements QuestionAskedListener, QuestionAnsweredListener, Quizzer {
 
     private enum QuizzerState { UNSTARTED, FINISHED, CANCELED,
         WAITING_FOR_QUESTION_ASKED, WAITING_FOR_QUESTION_ANSWERED }
@@ -32,10 +34,10 @@ public class Quizzer implements QuestionAskedListener, QuestionAnsweredListener 
     private HelpLevel helpLevelTime;
     private HelpLevel helpLevelWrong;
 
-    public Quizzer(QuizEventsListener quizEventsListener,
-                   QuestionAsker questionAsker,
-                   QuestionAnswerer questionAnswerer,
-                   SoundPlayer soundPlayer) {
+    public QuizzerImpl(QuizEventsListener quizEventsListener,
+                       QuestionAsker questionAsker,
+                       QuestionAnswerer questionAnswerer,
+                       SoundPlayer soundPlayer) {
         this.quizEventsListener = quizEventsListener;
         this.questionAsker = questionAsker;
         this.questionAnswerer = questionAnswerer;
@@ -45,6 +47,7 @@ public class Quizzer implements QuestionAskedListener, QuestionAnsweredListener 
         questionAnswerer.setQuestionAnsweredListener(this);
     }
 
+    @Override
     public void doQuiz(Quiz quiz) {
         this.quiz = quiz;
         state = QuizzerState.UNSTARTED;
@@ -66,6 +69,7 @@ public class Quizzer implements QuestionAskedListener, QuestionAnsweredListener 
 
     private void askNextQuestion() {
         helpLevelTime = HelpLevel.ONE;
+        helpLevelWrong = HelpLevel.ONE;
         questionAsker.askQuestion(quiz.nextQuestion());
         state = QuizzerState.WAITING_FOR_QUESTION_ASKED;
     }
@@ -128,11 +132,13 @@ public class Quizzer implements QuestionAskedListener, QuestionAnsweredListener 
         }
     }
 
+    @Override
     public void pause() {
         questionAsker.pause();
         questionAnswerer.pause();
     }
 
+    @Override
     public void resume() {
         switch (state) {
             case WAITING_FOR_QUESTION_ASKED:
@@ -144,12 +150,14 @@ public class Quizzer implements QuestionAskedListener, QuestionAnsweredListener 
         }
     }
 
+    @Override
     public void cancel() {
         questionAsker.cancel();
         questionAnswerer.cancel();
         state = QuizzerState.CANCELED;
     }
 
+    @Override
     public void destroy() {
         questionAsker.destroy();
         questionAnswerer.destroy();

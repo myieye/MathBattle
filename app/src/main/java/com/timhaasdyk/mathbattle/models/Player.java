@@ -7,12 +7,10 @@ public class Player {
 
     private String name;
     private PlayerTag tag;
-    private int points;
 
-    public Player(PlayerTag tag, String name, int points) {
+    public Player(PlayerTag tag, String name) {
         this.tag = tag;
         this.name = name;
-        this.points = points;
     }
 
     public String getName() {
@@ -21,14 +19,6 @@ public class Player {
 
     public PlayerTag getTag() {
         return tag;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
     }
 
     @Override

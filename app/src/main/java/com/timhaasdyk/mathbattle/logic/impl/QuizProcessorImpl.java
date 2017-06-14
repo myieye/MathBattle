@@ -5,7 +5,7 @@ import com.timhaasdyk.mathbattle.models.Player;
 import com.timhaasdyk.mathbattle.models.PlayerResult;
 import com.timhaasdyk.mathbattle.models.Question;
 import com.timhaasdyk.mathbattle.models.Quiz;
-import com.timhaasdyk.mathbattle.quizzer.PlayerPosition;
+import com.timhaasdyk.mathbattle.models.PlayerPosition;
 
 import java.util.*;
 

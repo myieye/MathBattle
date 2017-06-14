@@ -8,8 +8,8 @@ import android.view.animation.AnimationUtils;
 import com.timhaasdyk.mathbattle.R;
 import com.timhaasdyk.mathbattle.models.Player;
 import com.timhaasdyk.mathbattle.models.PlayerTag;
-import com.timhaasdyk.mathbattle.quizzer.PlayerAdmin;
-import com.timhaasdyk.mathbattle.quizzer.PlayerPosition;
+import com.timhaasdyk.mathbattle.logic.impl.PlayerAdmin;
+import com.timhaasdyk.mathbattle.models.PlayerPosition;
 import com.timhaasdyk.mathbattle.ui.drawables.PlayerButton;
 
 import java.util.List;

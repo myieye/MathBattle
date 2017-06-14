@@ -4,7 +4,7 @@ grammar numbers;
 
 public <answer> = /1e-10/ <decimalNumber> | /1e-5/ <playerTag> [<decimalNumber>];
 
-<playerTag> = /1/ grün | /1/ rot | /1/ blau | /30/ pink | /100/ gelb | /10/ orange | /10/ himmel | /10/ lila;
+<playerTag> = /50/ grün | /1/ rot | /1/ blau | /30/ pink | /100/ gelb | /40/ orange | /10/ himmel | /10/ lila;
 
 <decimalNumber> = [<sign>] <integer> [<decimalSeparator> (<onesEZero>+ | <integer>)];
 
